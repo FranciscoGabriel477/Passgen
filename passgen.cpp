@@ -90,7 +90,6 @@ int validar(int argc, char* argv[], int *tamanho,std::vector<char>& grupos){
                 verforca=true;
                 break;
                 case 'h'://caso o usuário tenha pedido as orientações elas são mostradas e o programa é encerrado
-                std::cout << "Bem-vindo ao passgen v 1.0, © DIMAp 2025\n";
                 std::cout << "Este programa gera senhas de tamanho específico com base na seleção de grupos de caracteres.\n\n";
                 std::cout << "Uso: passgen [<opções>]\n";
                 std::cout << "  --len n Tamanho da senha (padrão é 7).\n";
@@ -106,8 +105,8 @@ int validar(int argc, char* argv[], int *tamanho,std::vector<char>& grupos){
                 std::cout << "  -a, Adiciona caracteres de todos os grupos acima.\n";
                 std::cout << "  -t, Mostra a classificação da força da senha.\n";
                 std::cout << "  -h, Mostra esta tela de ajuda.\n";
-                break;
                 return 5;
+                break;
                 default://caso o usuário tenha pedido um grupo inválido encerra a aplicação e informa ao usuário
                 return 1;
                 break;
@@ -140,21 +139,21 @@ int main(int argc, char* argv[]){
     switch(validar(argc,argv,&tamanho,grupos)){//avalia a função 'validar' caso algum problema tenha sido indentifica ele é especificamente informado
         case 1:
         std::cout<<"Grupo desconhecido";
-        return 0;
+        exit(0);
         break;
         case 2:
         std::cout<<"Uso do'--len' sem fornecer tamanho";
-        return 0;
+        exit(0);
         break;
         case 3:
         std::cout<<"Tamanho inválido";
-        return 0;
+        exit(0);
         break;
         case 4:
         verforca=true;
         break;
         case 5:
-        return 0;
+        exit(0);
         break;
     }
     if(grupos.size()==0){//caso o usuário não forneca grupos a senha só possuirá letras minúsculas
